@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkswap_app_react=self.webpackChunkswap_app_react||[]).push([[7985],{77985(a,s,e){e.r(s),e.d(s,{cursorSvg:()=>c});var p,r=e(57528);const c=(0,e(20443).JW)(p||(p=(0,r.A)([' <svg fill="none" viewBox="0 0 13 4">\n  <path fill="currentColor" d="M.5 0h12L8.9 3.13a3.76 3.76 0 0 1-4.8 0L.5 0Z" />\n</svg>'])))}}]);

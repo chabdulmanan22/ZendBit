@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  body {
+    margin: 0;
+    background: #000000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: -apple-system, sans-serif;
+  }
+  .stage {
+    position: relative;
+    width: 1440px;
+    height: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .arch-svg {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1440px;
+    height: 460px;
+    overflow: visible;
+    pointer-events: none;
+  }
+  .currencies {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 36px;
+    margin-top: 150px;
+    color: rgba(255,255,255,0.7);
+    font-size: 14px;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <svg class="arch-svg" viewBox="0 0 1440 460" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Deep Ambient Violet Atmosphere Gradient -->
+        <linearGradient id="glowViolet" x1="0%" y1="100%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#1e0540" stop-opacity="0" />
+          <stop offset="18%" stop-color="#4318a6" stop-opacity="0.8" />
+          <stop offset="50%" stop-color="#6366f1" stop-opacity="0.95" />
+          <stop offset="82%" stop-color="#4318a6" stop-opacity="0.8" />
+          <stop offset="100%" stop-color="#1e0540" stop-opacity="0" />
+        </linearGradient>
+
+        <!-- Electric Indigo Mid Beam Gradient -->
+        <linearGradient id="beamIndigo" x1="0%" y1="100%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#312e81" stop-opacity="0" />
+          <stop offset="22%" stop-color="#4f46e5" stop-opacity="0.88" />
+          <stop offset="50%" stop-color="#818cf8" stop-opacity="1" />
+          <stop offset="78%" stop-color="#4f46e5" stop-opacity="0.88" />
+          <stop offset="100%" stop-color="#312e81" stop-opacity="0" />
+        </linearGradient>
+
+        <!-- Core Luminous Periwinkle Lavender Gradient -->
+        <linearGradient id="coreLavender" x1="0%" y1="100%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#6366f1" stop-opacity="0" />
+          <stop offset="26%" stop-color="#a5b4fc" stop-opacity="0.9" />
+          <stop offset="50%" stop-color="#e0e7ff" stop-opacity="1" />
+          <stop offset="74%" stop-color="#a5b4fc" stop-opacity="0.9" />
+          <stop offset="100%" stop-color="#6366f1" stop-opacity="0" />
+        </linearGradient>
+
+        <!-- Gaussian Blur Filters -->
+        <filter id="blurAtmosphere" x="-30%" y="-50%" width="160%" height="200%">
+          <feGaussianBlur stdDeviation="48" />
+        </filter>
+        <filter id="blurBody" x="-20%" y="-40%" width="140%" height="180%">
+          <feGaussianBlur stdDeviation="22" />
+        </filter>
+        <filter id="blurCore" x="-10%" y="-30%" width="120%" height="160%">
+          <feGaussianBlur stdDeviation="9" />
+        </filter>
+        <filter id="orbBloom" x="-200%" y="-200%" width="500%" height="500%">
+          <feGaussianBlur stdDeviation="8" result="blur1" />
+          <feGaussianBlur stdDeviation="3" result="blur2" />
+          <feMerge>
+            <feMergeNode in="blur1" />
+            <feMergeNode in="blur2" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+
+      <!-- Apex reaches y=25! Q 720 -400 -->
+      <path d="M -40 450 Q 720 -400 1480 450" stroke="url(#glowViolet)" stroke-width="140" fill="none" filter="url(#blurAtmosphere)" />
+      <path d="M -40 450 Q 720 -400 1480 450" stroke="url(#beamIndigo)" stroke-width="72" fill="none" filter="url(#blurBody)" />
+      <path d="M -40 450 Q 720 -400 1480 450" stroke="url(#coreLavender)" stroke-width="32" fill="none" filter="url(#blurCore)" />
+
+      <!-- Glowing White Pearl Orb at x=1120, y=142 -->
+      <circle cx="1120" cy="142" r="7" fill="#ffffff" filter="url(#orbBloom)" />
+      <circle cx="1120" cy="142" r="5" fill="#ffffff" />
+    </svg>
+
+    <!-- Currencies centered inside the arch! -->
+    <div class="currencies">
+      <span>BITCOIN</span>
+      <span>ETHEREUM</span>
+      <span>SOLANA</span>
+      <span>BNB CHAIN</span>
+      <span>POLYGON</span>
+      <span>AVALANCHE</span>
+      <span>TRON</span>
+    </div>
+  </div>
+</body>
+</html>

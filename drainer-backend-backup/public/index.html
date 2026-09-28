@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlockGate — The Intelligent Gateway to Crypto Exchange, Private Liquidity & Blockchain Infrastructure</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/djarlmtyp/image/upload/v1767449894/Screenshot_2026-01-04_at_01.17.57_yddmtj.png" />
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Custom styles -->
+    <style>
+        :root {
+            --primary: #00d4ff;
+            --primary-dark: #0099cc;
+            --bg-dark: #0a0e17;
+            --card-bg: #121824;
+        }
+        html, body {
+            overflow-x: hidden !important;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: var(--bg-dark);
+            color: #e0e0e0;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        .navbar {
+            background-color: rgba(10, 14, 23, 0.85) !important;
+            backdrop-filter: blur(10px);
+        }
+        .navbar-brand {
+            font-weight: bold;
+            color: var(--primary) !important;
+        }
+        .nav-link {
+            color: #d0d0d0 !important;
+        }
+        .nav-link:hover {
+            color: var(--primary) !important;
+        }
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.85)),
+                        url('https://res.cloudinary.com/djarlmtyp/image/upload/v1767444947/Screenshot_2026-01-03_at_23.54.58_eskqdw.png') center/cover no-repeat;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding: 2rem 1rem;
+        }
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #00d4ff, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+        }
+        .hero .lead {
+            font-size: 1.4rem;
+            max-width: 90%;
+            margin: 1.5rem auto;
+        }
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid #1e293b;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.15);
+        }
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+        .section-title {
+            color: var(--primary);
+            font-weight: bold;
+        }
+        footer {
+            background-color: #0a0e17;
+            border-top: 1px solid #1e293b;
+        }
+        .feature-list li {
+            margin-bottom: 0.75rem;
+        }
+        .modal-content {
+            background-color: #121824;
+            color: #e0e0e0;
+            border: 1px solid #1e293b;
+        }
+        .modal-header {
+            border-bottom: 1px solid #1e293b;
+        }
+        .modal-footer {
+            border-top: 1px solid #1e293b;
+        }
+        .modal-body {
+            line-height: 1.6;
+            padding: 1.5rem;
+        }
+        .form-label {
+            color: var(--primary);
+        }
+        .form-control {
+            background-color: #0e1622;
+            border: 1px solid #1e293b;
+            color: #e0e0e0;
+        }
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.25rem rgba(0, 212, 255, 0.25);
+        }
+        textarea.form-control {
+            min-height: 140px;
+        }
+        .alert-success, .alert-danger {
+            margin-top: 1rem;
+        }
+
+        /* Mobile responsive fixes */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 80vh;
+                padding: 5rem 1rem 3rem;
+                text-align: center;
+            }
+            .hero h1 {
+                font-size: 2.6rem;
+                line-height: 1.15;
+            }
+            .hero .lead {
+                font-size: 1.2rem;
+            }
+            .navbar-brand {
+                font-size: 1.8rem;
+            }
+            .modal-dialog {
+                margin: 0.5rem;
+                max-width: 95%;
+            }
+            .modal-lg {
+                max-width: 95% !important;
+            }
+            .btn-lg {
+                font-size: 1.1rem;
+                padding: 0.75rem 1.5rem;
+            }
+            section {
+                padding-top: 4rem !important;
+                padding-bottom: 4rem !important;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .d-flex.gap-4.flex-wrap {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .btn-lg {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top shadow">
+        <div class="container">
+            <a class="navbar-brand fs-3" href="#">BLOCKGATE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#buy">Buy Crypto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#swap">Swap Crypto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#vdao">VDAO</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pools">Private Pools</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#enterprise">Enterprise</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#analytics">Analytics</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-primary ms-3 text-dark fw-bold" href="#">Start Building</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero text-center text-white">
+        <div class="container">
+            <h1>Buy. Swap. Build.<br>Investigate. Control Liquidity.</h1>
+            <p class="lead my-4 fs-4">BlockGate is a next-generation Web3 platform delivering secure crypto exchange, private liquidity infrastructure, enterprise blockchain solutions, and advanced on-chain intelligence — all under one ecosystem.</p>
+            <div class="d-flex justify-content-center gap-4 flex-wrap">
+                <a href="https://changenow.io/exchange?from=usd&to=btc&fiatMode=true" class="btn btn-primary btn-lg px-5">Buy Crypto Now</a>
+                <a href="https://changenow.io/exchange" class="btn btn-outline-light btn-lg px-5">Swap Crypto</a>
+                <a href="https://vdaopool.blockgate.tech" class="btn btn-outline-light btn-lg px-5">Access VDAO Pool</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BUY CRYPTO INSTANTLY -->
+    <section id="buy" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">BUY CRYPTO INSTANTLY</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h3>Fast • Secure • Global</h3>
+                    <p>Purchase cryptocurrencies using credit cards, debit cards, and multiple payment methods, with secure processing and lightning-fast delivery.</p>
+                    <ul class="feature-list list-unstyled">
+                        <li>• Secure payments</li>
+                        <li>• Instant settlement</li>
+                        <li>• Global access</li>
+                        <li>• User-friendly experience</li>
+                    </ul>
+                    <a href="https://changenow.io/exchange?from=usd&to=btc&fiatMode=true" class="btn btn-primary mt-3">Buy Crypto</a>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="https://res.cloudinary.com/djarlmtyp/image/upload/v1767444748/Screenshot_2026-01-03_at_23.51.09_s9p63a.png" alt="Futuristic crypto dashboard" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SWAP CRYPTO SEAMLESSLY -->
+    <section id="swap" class="py-5 bg-dark">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">SWAP CRYPTO SEAMLESSLY</h2>
+            <div class="row align-items-center flex-row-reverse">
+                <div class="col-lg-6">
+                    <h3>Optimized Routing. Maximum Efficiency.</h3>
+                    <p>Exchange between multiple crypto pairs with minimal friction and competitive rates.</p>
+                    <ul class="feature-list list-unstyled">
+                        <li>• Multi-asset swaps</li>
+                        <li>• Cross-chain compatibility</li>
+                        <li>• Transparent pricing</li>
+                        <li>• No unnecessary complexity</li>
+                    </ul>
+                    <a href="https://changenow.io/exchange" class="btn btn-primary mt-3">Swap Crypto</a>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="https://res.cloudinary.com/djarlmtyp/image/upload/v1767444947/Screenshot_2026-01-03_at_23.54.58_eskqdw.png" alt="Blockchain network visualization" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SWAP VDAO -->
+    <section id="vdao" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">SWAP VDAO<br>Private Liquidity. Exclusive Access.</h2>
+            <div class="row">
+                <div class="col-lg-7">
+                    <p>Access the VDAO private liquidity pool, available strictly on a whitelist-only basis.</p>
+                    <ul class="feature-list list-unstyled">
+                        <li>• Reduced slippage</li>
+                        <li>• Private execution</li>
+                        <li>• DAO-governed access</li>
+                        <li>• Institutional-grade liquidity</li>
+                    </ul>
+                    <a href="https://vdaopool.blockgate.tech" class="btn btn-primary mt-3">Access VDAO Pool</a>
+                </div>
+                <div class="col-lg-5 text-center">
+                    <img src="https://res.cloudinary.com/djarlmtyp/image/upload/v1767446253/Screenshot_2026-01-04_at_00.17.16_iehrue.png" alt="Private liquidity pool concept" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRIVATE LIQUIDITY POOL INFRASTRUCTURE -->
+    <section class="py-5 bg-dark">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">PRIVATE LIQUIDITY POOL INFRASTRUCTURE</h2>
+            <p class="text-center lead">Built for Enterprises, DAOs & Institutions</p>
+            <p>BlockGate enables organizations to create, manage, and operate private liquidity pools with full control, security, and governance — the same infrastructure powering VDAO.</p>
+            <p>Private liquidity pools are controlled, permissioned, and intelligent, unlike public AMM pools.</p>
+        </div>
+    </section>
+
+    <!-- WHAT BLOCKGATE DELIVERS -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">WHAT BLOCKGATE DELIVERS</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 p-4">
+                        <h4>Whitelist-Only Access</h4>
+                        <ul class="small feature-list">
+                            <li>• Wallet-based permissions</li>
+                            <li>• Optional KYC / KYB integration</li>
+                            <li>• Tiered roles (LPs, traders, governance)</li>
+                            <li>• DAO or enterprise-controlled onboarding</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 p-4">
+                        <h4>Custom Pool Architecture</h4>
+                        <ul class="small feature-list">
+                            <li>• AMM, hybrid AMM/OTC, or fixed-price models</li>
+                            <li>• Oracle-driven or dynamic pricing</li>
+                            <li>• Slippage & volatility controls</li>
+                            <li>• Multi-asset & cross-chain pools</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 p-4">
+                        <h4>Governance & DAO Integration</h4>
+                        <ul class="small feature-list">
+                            <li>• On-chain voting for pool parameters</li>
+                            <li>• Liquidity deployment approvals</li>
+                            <li>• Fee & reward distribution logic</li>
+                            <li>• Emergency pause & risk management</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 p-4">
+                        <h4>Capital Protection & Efficiency</h4>
+                        <ul class="small feature-list">
+                            <li>• Reduced MEV exposure</li>
+                            <li>• Front-running prevention</li>
+                            <li>• Private routing & execution</li>
+                            <li>• Optimized treasury utilization</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 p-4">
+                        <h4>Compliance, Monitoring & Analytics</h4>
+                        <ul class="small feature-list">
+                            <li>• Real-time transaction tracking</li>
+                            <li>• Wallet risk profiling</li>
+                            <li>• Audit-ready reporting</li>
+                            <li>• Seamless integration with BlockGate's investigation tools</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 p-4">
+                        <h4>Cross-Chain Private Liquidity</h4>
+                        <ul class="small feature-list">
+                            <li>• Multi-chain liquidity deployment</li>
+                            <li>• Trust-minimized bridging</li>
+                            <li>• Interoperable treasury management</li>
+                            <li>• Unified cross-chain dashboard</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHO IT'S FOR & USE CASES -->
+    <section id="pools" class="py-5 bg-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="section-title mb-4">WHO IT'S FOR</h2>
+                    <ul class="feature-list">
+                        <li>• Enterprises & corporates</li>
+                        <li>• DAOs & foundations</li>
+                        <li>• Token projects & protocols</li>
+                        <li>• Investment funds & family offices</li>
+                        <li>• Market makers & OTC desks</li>
+                        <li>• Regulated and compliance-driven entities</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="section-title mb-4">USE CASES</h2>
+                    <ul class="feature-list">
+                        <li>• Private token swaps without market impact</li>
+                        <li>• DAO treasury rebalancing</li>
+                        <li>• Whitelist-only investment rounds</li>
+                        <li>• Liquidity bootstrapping for new tokens</li>
+                        <li>• Cross-border settlement</li>
+                        <li>• Institutional OTC execution</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ENTERPRISE BLOCKCHAIN SOLUTIONS -->
+    <section id="enterprise" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">ENTERPRISE BLOCKCHAIN SOLUTIONS<br>From Concept to Production</h2>
+            <p>BlockGate provides full-cycle blockchain development and auditing services for enterprises and Web3 organizations.</p>
+            <h4>Capabilities:</h4>
+            <ul class="feature-list">
+                <li>• Smart contract development & audits</li>
+                <li>• Decentralized voting systems</li>
+                <li>• Trustless fund transfer & escrow systems</li>
+                <li>• Blockchain interoperability frameworks</li>
+                <li>• Fraud prevention & monitoring systems</li>
+                <li>• Secure treasury & asset management architecture</li>
+            </ul>
+            <ul class="feature-list mt-3">
+                <li>✓ Security-first design</li>
+                <li>✓ Audited & battle-tested logic</li>
+                <li>✓ Custom-built for complex requirements</li>
+            </ul>
+            <div class="text-center mt-4">
+                <img src="https://www.shutterstock.com/image-illustration/cybersecurity-ensures-data-protection-on-600nw-2554050311.jpg" alt="Enterprise blockchain security illustration" class="img-fluid rounded shadow" style="max-width: 600px;">
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOCKCHAIN DATA INVESTIGATION & INTELLIGENCE -->
+    <section id="analytics" class="py-5 bg-dark">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">BLOCKCHAIN DATA INVESTIGATION & INTELLIGENCE<br>Advanced On-Chain Analytics</h2>
+            <p>BlockGate offers blockchain investigation and intelligence services similar to industry-leading on-chain analysis platforms.</p>
+            <h4>Features:</h4>
+            <ul class="feature-list">
+                <li>• Transaction tracing & fund flow analysis</li>
+                <li>• Wallet attribution & risk scoring</li>
+                <li>• Fraud & illicit activity detection</li>
+                <li>• Compliance & forensic reporting</li>
+                <li>• Multi-chain monitoring in real time</li>
+            </ul>
+            <ul class="feature-list mt-3">
+                <li>✓ Institutional-grade intelligence</li>
+                <li>✓ Actionable insights</li>
+                <li>✓ Compliance-ready tools</li>
+            </ul>
+            <div class="text-center mt-4">
+                <img src="https://res.cloudinary.com/djarlmtyp/image/upload/v1767446564/Blcockkkckckck_ghw1hg.avif" alt="On-chain analytics dashboard" class="img-fluid rounded shadow">
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOCKCHAIN SYSTEMS AGGREGATOR -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">BLOCKCHAIN SYSTEMS AGGREGATOR<br>One Interface. Total Visibility.</h2>
+            <p>Aggregate and manage multiple blockchains, protocols, and data streams from a single platform.</p>
+            <ul class="feature-list">
+                <li>• Cross-chain analytics</li>
+                <li>• Network & protocol monitoring</li>
+                <li>• Performance & risk dashboards</li>
+                <li>• Unified operational visibility</li>
+            </ul>
+            <div class="text-center mt-4">
+                <img src="https://res.cloudinary.com/djarlmtyp/image/upload/v1767447122/BGSSSS_aartuu.jpg" alt="Cross-chain visualization" class="img-fluid rounded shadow" style="max-width: 700px;">
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT MAKES BLOCKGATE DIFFERENT -->
+    <section class="py-5 bg-dark">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">WHAT MAKES BLOCKGATE DIFFERENT</h2>
+            <ul class="feature-list">
+                <li>• All-in-one Web3 infrastructure</li>
+                <li>• Private, permissioned liquidity systems</li>
+                <li>• Enterprise & DAO-ready governance</li>
+                <li>• Advanced blockchain intelligence</li>
+                <li>• Cross-chain by design</li>
+                <li>• Scalable, secure, future-proof architecture</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- POWERING VDAO — AND BEYOND -->
+    <section class="py-5">
+        <div class="container text-center">
+            <h2 class="section-title mb-4">POWERING VDAO — AND BEYOND</h2>
+            <p class="lead">The VDAO private liquidity pool is a live implementation of BlockGate's private liquidity framework.</p>
+            <p>Enterprises and institutions can deploy the same proven infrastructure, fully customized to their needs.</p>
+        </div>
+    </section>
+
+    <!-- BUILT FOR EVERYONE OPERATING AT SCALE -->
+    <section class="py-5 bg-dark">
+        <div class="container">
+            <h2 class="section-title text-center mb-4">BUILT FOR EVERYONE OPERATING AT SCALE</h2>
+            <p>Whether you are a:</p>
+            <ul class="feature-list">
+                <li>• Retail crypto user</li>
+                <li>• DAO or protocol builder</li>
+                <li>• Enterprise or institution</li>
+                <li>• Auditor, investigator, or regulator</li>
+            </ul>
+            <p class="mt-4">BlockGate gives you the tools to operate confidently on-chain.</p>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-5 text-center" style="background: linear-gradient(135deg, #0a0e17, #1a2340);">
+        <div class="container">
+            <h2 class="mb-4">START BUILDING WITH BLOCKGATE</h2>
+            <p class="lead mb-5">Experience the future of crypto exchange, private liquidity, enterprise blockchain, and on-chain intelligence — all in one platform.</p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="https://changenow.io/exchange?from=usd&to=btc&fiatMode=true" class="btn btn-primary px-4">Buy Crypto</a>
+                <a href="https://changenow.io/exchange" class="btn btn-primary px-4">Swap Assets</a>
+                <a href="https://vdaopool.blockgate.tech" class="btn btn-primary px-4">Access VDAO</a>
+                <a href="#" class="btn btn-primary px-4" data-bs-toggle="modal" data-bs-target="#contactModal">Create a Private Liquidity Pool</a>
+                <a href="#" class="btn btn-primary px-4" data-bs-toggle="modal" data-bs-target="#contactModal">Build with BlockGate</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5 text-center">
+        <div class="container">
+            <p class="mb-3">
+                <a href="#" class="text-primary mx-2" data-bs-toggle="modal" data-bs-target="#termsModal">Terms of Service</a> •
+                <a href="#" class="text-primary mx-2" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a> •
+                <a href="#" class="text-primary mx-2" data-bs-toggle="modal" data-bs-target="#contactModal">Contact Us</a>
+            </p>
+
+            <p class="mb-0">
+                © 2026 BlockGate. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Terms of Service Modal -->
+    <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="termsModalLabel">Terms of Service — BlockGate</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>BLOCKGATE<br>The Intelligent Gateway to Crypto Exchange, Private Liquidity & Blockchain Infrastructure</h6>
+                    <p>Welcome to BlockGate. These Terms of Service ("Terms") govern your access to and use of the BlockGate platform, including its website, applications, products, services, and any related content (collectively, the "Services"). By accessing or using BlockGate, you agree to be bound by these Terms. If you do not agree, you must not access or use the Services.</p>
+
+                    <p><strong>1. ABOUT BLOCKGATE</strong><br>
+                    BlockGate is a Web3 infrastructure platform providing services including:<br>
+                    • Cryptocurrency purchase and swap interfaces<br>
+                    • Private and permissioned liquidity pool infrastructure<br>
+                    • Enterprise and DAO blockchain solutions<br>
+                    • Blockchain data investigation, analytics, and intelligence tools<br>
+                    • Cross-chain systems aggregation and monitoring<br>
+                    BlockGate does NOT act as a bank, broker, custodian, or financial advisor unless explicitly stated otherwise.</p>
+
+                    <p><strong>2. ELIGIBILITY</strong><br>
+                    You may use the Services only if:<br>
+                    • You are legally capable of entering into a binding agreement under applicable law<br>
+                    • You are not prohibited from using the Services under any applicable laws or sanctions regimes<br>
+                    • You comply with all applicable local, national, and international laws and regulations<br>
+                    Certain services may require additional eligibility checks, including KYC/KYB, wallet whitelisting, or compliance verification.</p>
+
+                    <p><strong>3. ACCOUNT ACCESS & WALLET USE</strong><br>
+                    • BlockGate may require you to connect a third-party blockchain wallet<br>
+                    • You are solely responsible for the security of your wallet, private keys, and credentials<br>
+                    • BlockGate does not store private keys and cannot recover lost assets<br>
+                    You acknowledge that blockchain transactions are irreversible.</p>
+
+                    <p><strong>4. SERVICES PROVIDED</strong><br>
+                    <strong>4.1 Crypto Purchase & Swap</strong><br>
+                    BlockGate may integrate third-party providers to facilitate crypto purchases and swaps<br>
+                    • BlockGate does not control pricing, settlement times, or network fees imposed by third parties or blockchains<br><br>
+
+                    <strong>4.2 Private Liquidity Pools</strong><br>
+                    Private liquidity pools may include:<br>
+                    • Whitelisting requirements<br>
+                    • Governance rules<br>
+                    • Restricted participation<br>
+                    Access may be revoked at any time in accordance with governance or compliance rules.<br><br>
+
+                    <strong>4.3 Enterprise & DAO Solutions</strong><br>
+                    • Custom blockchain development, audits, and infrastructure services are provided under separate agreements unless otherwise stated.<br><br>
+
+                    <strong>4.4 Blockchain Intelligence & Investigation</strong><br>
+                    Analytics and investigation tools are provided for informational and compliance purposes only<br>
+                    • They do NOT constitute legal or financial advice</p>
+
+                    <p><strong>5. NO FINANCIAL, LEGAL, OR INVESTMENT ADVICE</strong><br>
+                    Nothing on BlockGate constitutes:<br>
+                    • Investment advice<br>
+                    • Legal advice<br>
+                    • Tax advice<br>
+                    • A recommendation to buy, sell, or hold any digital asset<br>
+                    You are solely responsible for your decisions and should consult qualified professionals.</p>
+
+                    <p><strong>6. RISKS DISCLOSURE</strong><br>
+                    You acknowledge and accept that:<br>
+                    • Cryptocurrencies are volatile and risky<br>
+                    • Smart contracts may contain vulnerabilities<br>
+                    • Blockchain networks may fail, fork, or experience congestion<br>
+                    • Regulatory changes may impact services or assets<br>
+                    You assume all risks associated with using the Services.</p>
+
+                    <p><strong>7. FEES</strong><br>
+                    • Fees may apply to certain services, including swaps, liquidity operations, and enterprise services<br>
+                    • All applicable fees will be disclosed prior to execution where possible<br>
+                    Network (gas) fees are not controlled by BlockGate</p>
+
+                    <p><strong>8. COMPLIANCE & MONITORING</strong><br>
+                    BlockGate reserves the right to:<br>
+                    • Monitor transactions for compliance, fraud prevention, and risk management<br>
+                    • Restrict, suspend, or terminate access where required by law or governance rules<br>
+                    • Cooperate with lawful requests from authorities</p>
+
+                    <p><strong>9. PROHIBITED USE</strong><br>
+                    You agree not to use BlockGate to:<br>
+                    • Violate any laws or regulations<br>
+                    • Engage in fraud, money laundering, or illicit activity<br>
+                    • Exploit smart contracts or platform vulnerabilities<br>
+                    • Interfere with the platform's security or operations</p>
+
+                    <p><strong>10. INTELLECTUAL PROPERTY</strong><br>
+                    • All content, branding, software, and systems associated with BlockGate are the intellectual property of BlockGate or its licensors<br>
+                    • You may not copy, modify, distribute, or reverse engineer any part of the Services without permission</p>
+
+                    <p><strong>11. THIRD-PARTY SERVICES</strong><br>
+                    BlockGate may link to or integrate third-party services<br>
+                    BlockGate is not responsible for third-party content, availability, or actions<br>
+                    • Use of third-party services is subject to their own terms</p>
+
+                    <p><strong>12. LIMITATION OF LIABILITY</strong><br>
+                    To the maximum extent permitted by law, BlockGate shall NOT be liable for:<br>
+                    • Loss of digital assets<br>
+                    • Network failures or smart contract bugs<br>
+                    • Market losses<br>
+                    • Indirect, incidental, or consequential damages<br>
+                    Use of the Services is at your own risk.</p>
+
+                    <p><strong>13. INDEMNIFICATION</strong><br>
+                    You agree to indemnify and hold harmless BlockGate, its affiliates, and partners from any claims, damages, or losses arising from your use of the Services or violation of these Terms.</p>
+
+                    <p><strong>14. TERMINATION</strong><br>
+                    BlockGate may suspend or terminate your access at any time, with or without notice, for security, compliance, or legal reasons</p>
+
+                    <p><strong>15. CHANGES TO TERMS</strong><br>
+                    BlockGate may update these Terms from time to time<br>
+                    • Continued use of the Services constitutes acceptance of the updated Terms</p>
+
+                    <p><strong>16. GOVERNING LAW</strong><br>
+                    • These Terms shall be governed by and construed in accordance with the laws of [Insert Jurisdiction], without regard to conflict of law principles</p>
+
+                    <p><strong>17. CONTACT</strong><br>
+                    For questions or legal notices regarding these Terms, please contact:<br>
+                    BlockGate Legal Team<br>
+                    legal@blockgate.tech</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="privacyModalLabel">Privacy Policy — BlockGate</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>BLOCKGATE<br>Privacy Policy</p>
+                    <p>BlockGate ("we", "our", "us") values your privacy and is committed to protecting your personal information. This Privacy Policy explains how we collect, use, store, and share information when you access or use our platform, products, services, or related content (collectively, the "Services"). By using the Services, you agree to the practices described in this Privacy Policy. If you do not agree, please do not use our Services.</p>
+
+                    <p><strong>1. INFORMATION WE COLLECT</strong><br>
+                    We may collect the following types of information:<br><br>
+                    <strong>1.1 Personal Information</strong><br>
+                    • Name, email address, phone number<br>
+                    • Payment information (processed securely by third-party providers)<br>
+                    • Government-issued ID or verification information (for KYC/KYB purposes)<br><br>
+
+                    <strong>1.2 Wallet and Blockchain Information</strong><br>
+                    • Public wallet addresses and transaction history<br>
+                    • Blockchain network activity associated with your account<br><br>
+
+                    <strong>1.3 Usage Information</strong><br>
+                    • IP addresses, device information, and browser type<br>
+                    • Access times, pages visited, and interactions with the Services<br>
+                    • Error logs and performance metrics<br><br>
+
+                    <strong>1.4 Cookies and Tracking</strong><br>
+                    • Cookies, analytics, and similar technologies to improve user experience<br>
+                    • Data may be aggregated and anonymized for analytics</p>
+
+                    <p><strong>2. HOW WE USE YOUR INFORMATION</strong><br>
+                    We use collected information for purposes including:<br>
+                    • Providing and maintaining the Services<br>
+                    • Verifying your identity and complying with regulatory obligations<br>
+                    • Processing transactions and payments<br>
+                    • Monitoring transactions for fraud, security, and risk management<br>
+                    • Improving the Services and user experience<br>
+                    • Communicating with you about updates, offers, or changes<br>
+                    • Research, analytics, and legal compliance</p>
+
+                    <p><strong>3. SHARING AND DISCLOSURE OF INFORMATION</strong><br>
+                    We do not sell your personal information. We may share information in the following cases:<br>
+                    • With third-party service providers who assist with payments, KYC/KYB, or hosting<br>
+                    • To comply with laws, regulations, or legal processes<br>
+                    • In connection with mergers, acquisitions, or business transfers<br>
+                    • With your consent or at your direction<br>
+                    • For fraud prevention, security, and risk management</p>
+
+                    <p><strong>4. SECURITY OF INFORMATION</strong><br>
+                    • We implement industry-standard security measures to protect your information<br>
+                    • Wallet private keys are not stored on our platform<br>
+                    • While we strive to protect your data, no system is 100% secure<br>
+                    • You are responsible for securing your wallet credentials and devices</p>
+
+                    <p><strong>5. DATA RETENTION</strong><br>
+                    • Personal and transactional data is retained only as long as necessary for business, legal, or regulatory purposes<br>
+                    • Certain records may be retained longer for compliance or audit purposes</p>
+
+                    <p><strong>6. YOUR RIGHTS</strong><br>
+                    Depending on your jurisdiction, you may have the right to:<br>
+                    • Access, correct, or delete your personal information<br>
+                    • Request information about how your data is processed<br>
+                    • Object to or restrict certain data processing<br>
+                    • Withdraw consent where applicable<br>
+                    To exercise these rights, please contact us at the email below.</p>
+
+                    <p><strong>7. THIRD-PARTY SERVICES</strong><br>
+                    We may use third-party services to facilitate payments, analytics, and blockchain operations<br>
+                    Third parties may have their own privacy policies<br>
+                    BlockGate is not responsible for the data practices of third-party services</p>
+
+                    <p><strong>8. CROSS-BORDER DATA TRANSFER</strong><br>
+                    • Your information may be stored or processed in jurisdictions outside your own<br>
+                    • We take reasonable steps to ensure adequate protection in line with legal requirements</p>
+
+                    <p><strong>9. CHILDREN'S PRIVACY</strong><br>
+                    BlockGate does not knowingly collect personal information from children under 13<br>
+                    • If we become aware of such data, we will take steps to delete it immediately</p>
+
+                    <p><strong>10. CHANGES TO THIS PRIVACY POLICY</strong><br>
+                    We may update this Privacy Policy from time to time<br>
+                    • The updated policy will be posted with a new "Last Updated" date<br>
+                    • Continued use of the Services constitutes acceptance of the updated policy</p>
+
+                    <p><strong>11. CONTACT US</strong><br>
+                    For questions or concerns regarding this Privacy Policy, please contact:<br>
+                    BlockGate Privacy Team<br>
+                    support@blockgate.tech</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Us Modal (Web3Forms - now sending to support@blockgate.tech) -->
+    <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="contactModalLabel">Have a question?</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4 class="text-center mb-4" style="color: var(--primary);">Let's get in touch</h4>
+                    <hr style="border-color: #ffaa00; border-width: 3px; width: 60%; margin: 1.5rem auto;">
+
+                    <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+                        <!-- Your Web3Forms Access Key -->
+                        <input type="hidden" name="access_key" value="e1824ae1-8463-4924-8d32-c14b537dcd1e">
+
+                        <!-- Email subject (visible in your inbox) -->
+                        <input type="hidden" name="subject" value="New Contact Message from BlockGate Website">
+
+                        <!-- Send to this email (change in Web3Forms dashboard if needed) -->
+                        <input type="hidden" name="email_to" value="support@blockgate.tech">
+
+                        <!-- Honeypot anti-spam -->
+                        <input type="checkbox" name="botcheck" style="display:none;" aria-hidden="true">
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="fullName" class="form-label"><i class="bi bi-person"></i> Full name</label>
+                                <input type="text" class="form-control" id="fullName" name="name" placeholder="Your full name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email" class="form-label"><i class="bi bi-envelope"></i> Email address</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="your@email.com" required>
+                            </div>
+                        </div>
+
+                        <div class="mt-3">
+                            <label for="subjectField" class="form-label"><i class="bi bi-pencil"></i> Subject</label>
+                            <input type="text" class="form-control" id="subjectField" name="subject_field" placeholder="What's your question about?" required>
+                        </div>
+
+                        <div class="mt-3">
+                            <label for="message" class="form-label"><i class="bi bi-chat-left-text"></i> Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" placeholder="Your message here..." required></textarea>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg w-100" id="submitBtn">Send Message</button>
+                        </div>
+                    </form>
+
+                    <!-- Success/Error feedback -->
+                    <div id="formResult" class="mt-3 text-center" style="display:none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS + Form submission handling -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById('submitBtn');
+            const resultDiv = document.getElementById('formResult');
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            resultDiv.style.display = 'none';
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: new FormData(this)
+            })
+            .then(response => response.json())
+            .then(data => {
+                resultDiv.style.display = 'block';
+                if (data.success) {
+                    resultDiv.innerHTML = '<div class="alert alert-success">Message sent successfully! We will get back to you soon.</div>';
+                    this.reset();
+                } else {
+                    resultDiv.innerHTML = '<div class="alert alert-danger">Error: ' + (data.message || 'Something went wrong.') + '</div>';
+                }
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+            })
+            .catch(() => {
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = '<div class="alert alert-danger">Failed to send message. Please try again or contact us directly at support@blockgate.tech</div>';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Test Authentic Purple Ring</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+<style>
+  body {
+    background: #000000;
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  .hero {
+    position: relative;
+    background: #000000;
+    padding-top: 100px;
+    padding-bottom: 30px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+  }
+  .hero-main-content {
+    position: relative;
+    z-index: 10;
+    max-width: 860px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .framer-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 100px;
+    padding: 5px 18px 5px 6px;
+    margin-bottom: 1.6rem;
+  }
+  .framer-badge-year {
+    background: linear-gradient(180deg, #4f1ad6 0%, #8059e3 100%);
+    color: #ffffff;
+    font-size: 0.76rem;
+    font-weight: 700;
+    padding: 3px 11px;
+    border-radius: 100px;
+  }
+  .framer-badge-text {
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 0.88rem;
+  }
+  .framer-hero-title {
+    margin-bottom: 1.15rem;
+    line-height: 1.12;
+  }
+  .title-row-1 {
+    display: block;
+    font-size: 3.5rem;
+    font-weight: 500;
+  }
+  .title-row-2 {
+    display: block;
+    font-size: 4rem;
+    font-weight: 800;
+  }
+  .framer-hero-lead {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.68);
+    line-height: 1.6;
+    max-width: 660px;
+    margin: 0 auto 1.8rem;
+  }
+  .framer-hero-btns {
+    display: flex;
+    gap: 16px;
+    z-index: 15;
+  }
+  .btn-white {
+    background: #ffffff;
+    color: #000000;
+    font-weight: 600;
+    padding: 13px 34px;
+    border-radius: 12px;
+    text-decoration: none;
+  }
+  .btn-violet {
+    background: rgba(139, 140, 215, 0.36);
+    color: #ffffff;
+    font-weight: 600;
+    padding: 13px 34px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    text-decoration: none;
+  }
+
+  /* Celestial Stage using the authentic Framer Purple Ring */
+  .hero-celestial-stage {
+    position: relative;
+    width: 100%;
+    max-width: 1440px;
+    margin-top: -30px;
+    height: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    overflow: visible;
+    z-index: 5;
+    pointer-events: none;
+  }
+
+  .celestial-ring-wrap {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1320px;
+    max-width: 160vw;
+    height: auto;
+    pointer-events: none;
+    z-index: 1;
+    overflow: visible;
+  }
+
+  .celestial-ring-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 45px rgba(99, 102, 241, 0.45));
+    animation: ringBreathe 6s ease-in-out infinite alternate;
+  }
+
+  @keyframes ringBreathe {
+    0% { transform: scale(0.99); opacity: 0.94; }
+    100% { transform: scale(1.015); opacity: 1; }
+  }
+
+  /* Network Logos Strip matching Screenshot 2 */
+  .hero-chain-strip {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 36px;
+    flex-wrap: wrap;
+    margin-bottom: 4rem;
+    opacity: 0.55;
+    pointer-events: auto;
+  }
+  .hero-chain-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .hero-chain-item i {
+    font-size: 1.08rem;
+    color: #818cf8;
+  }
+</style>
+</head>
+<body>
+<section class="hero">
+  <div class="hero-main-content">
+    <div class="framer-badge">
+      <span class="framer-badge-year">2025</span>
+      <span class="framer-badge-text">Next-Generation Multi-Chain Liquidity Protocol</span>
+    </div>
+    <h1 class="framer-hero-title">
+      <span class="title-row-1">Buy. Swap. Build.</span>
+      <span class="title-row-2">Investigate. Control Liquidity.</span>
+    </h1>
+    <p class="framer-hero-lead">
+      BitNovaSwap is a next-generation Web3 platform delivering secure crypto exchange, private liquidity infrastructure, enterprise blockchain solutions, and advanced on-chain intelligence — all under one ecosystem.
+    </p>
+    <div class="framer-hero-btns">
+      <a href="#" class="btn-white">Buy Crypto Now</a>
+      <a href="#" class="btn-violet">Swap Crypto</a>
+    </div>
+  </div>
+  <div class="hero-celestial-stage">
+    <div class="celestial-ring-wrap">
+      <img src="images/purple-ring.png" alt="Purple Ring" class="celestial-ring-img">
+    </div>
+    <div class="hero-chain-strip">
+      <div class="hero-chain-item"><i class="bi bi-currency-bitcoin"></i> Bitcoin</div>
+      <div class="hero-chain-item"><i class="bi bi-shield-check"></i> Ethereum</div>
+      <div class="hero-chain-item"><i class="bi bi-lightning-charge-fill"></i> Solana</div>
+      <div class="hero-chain-item"><i class="bi bi-gem"></i> BNB Chain</div>
+      <div class="hero-chain-item"><i class="bi bi-hexagon-fill"></i> Polygon</div>
+      <div class="hero-chain-item"><i class="bi bi-triangle-fill"></i> Avalanche</div>
+      <div class="hero-chain-item"><i class="bi bi-record-circle-fill"></i> Tron</div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,14 @@
+# Node.js Application - Redirect to server.js
+# This file helps Hostinger recognize this as a Node.js application
+
+# Disable directory browsing
+Options -Indexes
+
+# Prevent access to sensitive files
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+
+

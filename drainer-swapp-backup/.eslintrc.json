@@ -1,0 +1,14 @@
+{
+  "extends": ["react-app"],
+  "env": {
+    "es2020": true,
+    "browser": true
+  },
+  "globals": {
+    "BigInt": "readonly"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2020
+  }
+}
+
